@@ -1,33 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import nltk
-
-
-# In[ ]:
-
 
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
-
-# In[8]:
-
-
 # Сегментация на отдельные предложения
-
-
-# In[5]:
-
-
 from nltk import sent_tokenize
-
-
-# In[6]:
-
 
 text_file = open("Text file.txt", "r", encoding="utf-8")
 text = text_file.read()
@@ -37,20 +17,8 @@ print(sentence_segments)
 # Текст: отрывок из "Героя нашего времени"
 
 
-# In[7]:
-
-
 # Токенизация каждого предложения
-
-
-# In[8]:
-
-
 from nltk.tokenize import word_tokenize
-
-
-# In[18]:
-
 
 tokenized_segments = []
 i = 0
@@ -60,21 +28,9 @@ for segment in sentence_segments:
     i += 1
 
 
-# In[10]:
-
-
 # Лемматизация
-
-
-# In[11]:
-
-
 import pymorphy3
 morphy = pymorphy3.MorphAnalyzer()
-
-
-# In[63]:
-
 
 def fits(word_parse1, word_parse2):
     #print(word_parse1)
@@ -95,10 +51,6 @@ def fits(word_parse1, word_parse2):
                     return True
     return False
 
-
-# In[67]:
-
-
 word_pairs = []
 for segment_tokens in tokenized_segments:
     for i in range(len(segment_tokens)-1):
@@ -115,10 +67,3 @@ for word_pair in word_pairs:
 # 1. Выделено "запад пятиглавый" из "На запад пятиглавый Бешту синеет" - "На запад" есть составное наречие (синеет (куда?) на запад)
 # 2. Не выделено "пятиглавый Бешту" - "Бешту" несклоняемое, воспринимается pymorphy как в дательном падеже, а "пятиглавый" - в именительном
 # 3. Не выделено "двуглавым Эльборусом" - "Эльборусом" воспринимается как прилагательное
-
-
-# In[ ]:
-
-
-
-
