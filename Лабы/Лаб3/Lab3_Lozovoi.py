@@ -8,7 +8,7 @@ tokenizer = BertTokenizer.from_pretrained(name)
 model = BertForMaskedLM.from_pretrained(name, return_dict = True)
 
 # Предложение для предсказания
-sentence = "Иновационная " + tokenizer.mask_token + " с искусственным интеллектом находилась в разработке длительное время, но представленный командой результат поразил всех."
+sentence = "Инновационная " + tokenizer.mask_token + " с искусственным интеллектом находилась в разработке длительное время, но представленный командой результат поразил всех."
 
 # Ввод модели
 model_input = tokenizer.encode_plus(sentence, return_tensors = "pt")
